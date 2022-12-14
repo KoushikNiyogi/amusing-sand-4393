@@ -107,6 +107,179 @@ margin-right: 20px;
 #habits>:nth-child(3)>div>:nth-child(2){
     width: 90%;
 }
+
+/* styles for discover nutrition */
+
+#discoverNutrition{
+    text-align: center;
+    padding: 0px 0px 80px 0px;
+    width: 80%;
+    margin: auto;
+}
+#discoverNutrition>h1{
+    margin-bottom: 10px;
+}
+#discoverNutrition>p{
+    margin-bottom: 20px;
+}
+#discoverNutrition>div{
+    display: flex;
+    width:80%;
+    margin: auto;
+    justify-content: space-between;
+}
+#discoverNutrition>div>:nth-child(1){
+    width: 30%;
+}
+#discoverNutrition>div>:nth-child(1)>img{
+    width: 100%;
+}
+#discoverNutrition>div>:nth-child(2){
+    width: 60%;
+    display: grid;
+    align-content: space-evenly;
+}
+#discoverNutrition>div>:nth-child(2)>div{
+    display:flex;
+    
+}
+#discoverNutrition>div>:nth-child(2)>div>img{
+    width: 5%;
+    align-self: flex-start;
+    margin-right: 10px;
+}
+#discoverNutrition>div>:nth-child(2)>div>:nth-child(2){
+    text-align: left;
+}
+/* signup ads 2 */
+
+#signupAd2{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #262a3b;
+}
+#signupAd2>p{
+    width: 40%;
+    margin: auto;
+    margin-bottom: 15px;
+    color: white;
+}
+#signupAd2>button{
+    padding: 10px 25px;
+    background-color: #44d07b;
+    border: none;
+    border-radius: 5px;
+}
+
+/* styles for sync */
+#sync{
+    width: 80%;
+    margin:auto;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+#sync>div>img{
+    margin-top: 20px;
+    width: 70%;
+}
+
+/* styles for nutriMeter review */
+#nutriMeterReview{
+    width: 100%;
+    margin: auto;
+    text-align:center ;
+    background-color: #fafbff;
+    padding: 80px 0px 40px 0px;
+}
+#nutriMeterReview>h1{
+    margin-bottom: 60px;
+}
+#nutriMeterReview>div{
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 40px;
+}
+#nutriMeterReview>div>div{
+    display: flex;
+    justify-content: space-around;
+}
+#nutriMeterReview>div>div>h3{
+    width: 40%;
+    color: #416d64;
+}
+#nutriMeterReview>div>div>p{
+    width: 40%;
+    text-align: left;
+
+}
+#nutriMeterReview>div>div>div{
+    width: 40%;
+}
+#nutriMeterReview>div>div>div>img{
+    width: 30%;
+}
+
+#nutriMeterReview>div>div:nth-child(2){
+    justify-content: space-around;
+}
+
+/* styles for nutrimeter pro */
+
+#nutrimeterPro{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom:80px;
+} 
+#nutrimeterPro>:nth-child(1){
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+#nutrimeterPro>:nth-child(1)>:nth-child(1){
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+#nutrimeterPro>:nth-child(1)>:nth-child(1)>h2{
+    margin-bottom: 20px;
+}
+#nutrimeterPro>:nth-child(1)>:nth-child(1)>h3{
+    margin-bottom: 20px;
+}
+#nutrimeterPro>:nth-child(1)>:nth-child(1)>h2>span{
+    color: #44d07b;
+}
+#nutrimeterPro>:nth-child(1)>:nth-child(1)>p{
+    margin-bottom: 20px;
+}
+#nutrimeterPro>:nth-child(1)>:nth-child(1)>button{
+    margin-bottom: 20px;
+    padding: 10px 25px;
+    background-color: white;
+    border:1px solid;
+    border-radius: 5px;
+}
+#nutrimeterPro>:nth-child(1)>:nth-child(2){
+    width: 50%;
+}
+#nutrimeterPro>:nth-child(1)>:nth-child(2)>img{
+    width: 80%;
+}
+#nutrimeterPro>:nth-child(3){
+    padding: 40px;
+}
 @media all and (max-width:767px) {
     #signupAd {
 
@@ -125,6 +298,49 @@ margin-right: 20px;
     width: 100%;
 
     }
+
+/* styles for nutrimeter review */
+
+    #nutriMeterReview>div>div{
+        flex-direction: column;
+    }
+    #nutriMeterReview>#Ios>:nth-child(2){
+        flex-direction:column-reverse;
+    }
+    #nutriMeterReview>div>div>h3{
+        width: 80%;
+        margin: auto;
+        text-align: left;
+        color: #416d64;
+        margin-bottom: 20px;
+    }
+    #nutriMeterReview>div>div>p{
+        width: 80%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    #nutriMeterReview>div>div>div{
+        width: 80%;
+        justify-content: flex-start;
+    }
+    #nutriMeterReview>div>div>div>img{
+        width: 40%;
+    }
+    #nutriMeterReview>#android>:nth-child(1){
+        flex-direction:column-reverse;
+    }
+
+    #nutrimeterPro>:nth-child(1){
+        flex-direction: column-reverse;
+    }
+    #nutrimeterPro>:nth-child(1)>:nth-child(1){
+        width: 80%;
+        margin: auto;
+    }
+    #nutrimeterPro>:nth-child(1)>:nth-child(2){
+        width: 60%;
+        margin:auto;
+    }
 }
 @media all and (min-width:480px) and (max-width:991px) {
     #habits>:nth-child(3){
@@ -133,11 +349,48 @@ margin-right: 20px;
         gap: 40px;
         margin-bottom: 20px;
     }
+
+    #discoverNutrition>div{
+        flex-direction: column;
+    }
+
+    #discoverNutrition>div>:nth-child(1){
+        width: 60%;
+        margin: auto;
+    }
+    #discoverNutrition>div>:nth-child(2){
+        width: 80%;
+        display: grid;
+        align-content: space-evenly;
+        margin: auto;
+    }
+    #discoverNutrition>div>:nth-child(2)>div{
+       margin-bottom: 20px;
+        
+    }
 }
 @media all and (max-width:479px){
     #habits>:nth-child(3){
        
         grid-template-columns: repeat(1,1fr);
         margin-bottom: 20px;
+    }
+    #discoverNutrition>div{
+        flex-direction: column;
+    }
+
+    #discoverNutrition>div>:nth-child(1){
+        width: 60%;
+        margin: auto;
+    }
+    #discoverNutrition>div>:nth-child(2){
+        width: 80%;
+        display: grid;
+        align-content: space-evenly;
+        margin: auto;
+    }
+    #discoverNutrition>div>:nth-child(2)>div{
+       margin-bottom: 20px;
+        
     }
 }

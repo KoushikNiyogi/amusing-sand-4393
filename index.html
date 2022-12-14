@@ -1,101 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrimeter - Home Page</title>
+
     <style>
-        #navigation-bar{
-            width: 80%;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* sign up ad */
+
+        #signupAd {
+            width: 70%;
+            display: flex;
+            flex-direction: row;
             margin: auto;
-            position: relative ;
-            
+            justify-content: space-between;
+            margin-top: 80px;
+            margin: bottom 80px;
+            border: 1px solid red;
         }
-        #navigation-bar>:nth-child(1){
-         display:flex;
-         width:40%;
-         align-items: center;
-         float: left;
-        }
-        #navigation-bar>div>div{
-            width: 80px;
-            margin-right: 10px;
-        }
-        #navigation-bar>div>div>img{
-            width: 100%;
-            border-radius: 90%;
-            object-fit:fit;
-            
-        }
-        #navigation-bar>:nth-child(2){
-            float: right;
-            width: 60%;
-            align-items: center;
-        }
-        #navigation-bar>:nth-child(2) ul li{
-            display: inline-block;
-            padding: 15px 25px;
-            text-decoration: none;
-            font-weight:300;
-            font-size:x-large;
-        }
-        #login-btn{
+
+        #signupAd>:nth-child(1) {
+            width: 50%;
             border: 1px solid black;
-            border-radius: 10px;
-            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
         }
-        #login-btn>a{
-            text-decoration: none;
-            color: black;
+
+        #signupAd>:nth-child(1)>p {
+            font-size: large;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
-        .toggle-btn{
-            width:35px;
-            position:absolute;
-            right:60px;
-            top:40px;
-            display: none;
-        }
-        .toggle-btn span{
+
+        #signupAd>:nth-child(1)>button {
             display: inline-block;
-            width: 100%;
-            height:5px;
-            background-color: black;
-            float: left;
-            margin-bottom: 5px;
+            padding: 10px 20px;
+            background-color: #44d07b;
+            border: none;
+            border-radius: 5px;
         }
-        @media all and (max-width:950px){
-            .toggle-btn{
-                display: block;
+
+        #signupAd>:nth-child(2) {
+            width: 40%;
+        }
+
+        #signupAd>:nth-child(2)>img {
+            width: 100%;
+        }
+
+
+
+        @media all and (min-width:300px) and (max-width:767px) {
+            #signupAd {
+
+                flex-direction: column;
             }
-            #navigation-bar>:nth-child(2){
-                display: none;
-            }
+
+           
         }
     </style>
+
 </head>
+
 <body>
-    <div id="navigation-bar">
-        
-        <div id="logo">
-            <div><img src="./images/NUTRI.png" alt="Logo of Nutri-Meter"></div>
-            <h1>Nutri-Meter</h1>
+    <header class="header"></header>
+
+    <div id="signupAd">
+        <div>
+            <h1>Eat smarter. <br>Live better</h1>
+            <p>Track your diet, exercise, and helath data.</p>
+            <button id="signup1" onclick="signup1()">Sign Up - It's Free!</button>
         </div>
-        <div >
-            <ul>
-                <li>Products</li>
-                <li>Blog</li>
-                <li>Forums</li>
-                <li>About</li>
-                <li>Support</li>
-                <li id="login-btn"><a href="login.html"> LOG IN</a></li>
-            </ul>
-        </div>
-        <div class="toggle-btn">
-            <span></span> 
-            <span></span>
-            <span></span>
-        </div>
+        <div><img src="./images/calories-counting-cover-2-1.jpg" alt="photo of calories and food"></div>
     </div>
+
 </body>
+
 </html>
+<script>
+    function signup1() {
+        window.location.assign("signup.html");
+    }
+</script>

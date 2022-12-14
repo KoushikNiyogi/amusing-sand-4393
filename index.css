@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* sign up ad */
+
+#signupAd {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: space-between;
+    margin-top: 80px;
+    margin: bottom 80px;
+}
+
+#signupAd>:nth-child(1) {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#signupAd>:nth-child(1)>p {
+    font-size: large;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#signupAd>:nth-child(1)>button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #44d07b;
+    border: none;
+    border-radius: 5px;
+}
+
+#signupAd>:nth-child(2) {
+    width: 40%;
+}
+
+#signupAd>:nth-child(2)>img {
+    width: 100%;
+}
+
+/* styles for mobile download */
+
+#mobile-download{
+width: 100%;
+margin: auto;
+text-align: center;
+background-color: #fafbff;
+padding-top: 30px;
+padding-bottom: 20px;
+}
+#mobile-download>:nth-child(2){
+display: flex;
+width: 50%;
+margin: auto;
+justify-content: space-between;
+margin-bottom: 20px;
+margin-top: 10px;
+}
+#mobile-download>:nth-child(2)>img{
+width: 20%;
+}
+#mobile-download>:nth-child(4){
+display: flex;
+width: 40%;
+margin: auto;
+justify-content: center;
+margin-bottom: 20px;
+margin-top: 10px;
+}
+#mobile-download>:nth-child(4)>img{
+width: 20%;
+margin-right: 20px;
+}
+
+/* styles for habits */
+#habits{
+    text-align: center;
+
+    width: 80%;
+    margin: auto;
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+#habits>:nth-child(2){
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#habits>:nth-child(3){
+    display: grid;
+    width: 100% ;
+    margin: auto;
+    grid-template-columns: repeat(3,1fr);
+    gap: 40px;
+    margin-bottom: 20px;
+}
+#habits>:nth-child(3)>div>img{
+    width: 50%;
+    margin: auto;
+}
+#habits>:nth-child(3)>div>:nth-child(2){
+    width: 90%;
+}
+@media all and (max-width:767px) {
+    #signupAd {
+
+        flex-direction: column;
+    }
+    #signupAd > :nth-child(1){
+        width: 100%;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    #signupAd>:nth-child(2) {
+    width: 70%;
+    margin: auto;
+     }
+    #signupAd>:nth-child(2)>img {
+    width: 100%;
+
+    }
+}
+@media all and (min-width:480px) and (max-width:991px) {
+    #habits>:nth-child(3){
+       
+        grid-template-columns: repeat(2,1fr);
+        gap: 40px;
+        margin-bottom: 20px;
+    }
+}
+@media all and (max-width:479px){
+    #habits>:nth-child(3){
+       
+        grid-template-columns: repeat(1,1fr);
+        margin-bottom: 20px;
+    }
+}

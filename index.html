@@ -6,67 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrimeter - Home Page</title>
-
+    <link rel="stylesheet" href="index.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* sign up ad */
-
-        #signupAd {
-            width: 70%;
-            display: flex;
-            flex-direction: row;
-            margin: auto;
-            justify-content: space-between;
-            margin-top: 80px;
-            margin: bottom 80px;
-            border: 1px solid red;
-        }
-
-        #signupAd>:nth-child(1) {
-            width: 50%;
-            border: 1px solid black;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        #signupAd>:nth-child(1)>p {
-            font-size: large;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        #signupAd>:nth-child(1)>button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #44d07b;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #signupAd>:nth-child(2) {
-            width: 40%;
-        }
-
-        #signupAd>:nth-child(2)>img {
-            width: 100%;
-        }
-
-
-
-        @media all and (min-width:300px) and (max-width:767px) {
-            #signupAd {
-
-                flex-direction: column;
-            }
-
-           
-        }
+       
     </style>
 
 </head>
@@ -76,13 +18,65 @@
 
     <div id="signupAd">
         <div>
-            <h1>Eat smarter. <br>Live better</h1>
+            <h1>Eat smarter. <br>Live better.</h1>
             <p>Track your diet, exercise, and helath data.</p>
             <button id="signup1" onclick="signup1()">Sign Up - It's Free!</button>
         </div>
         <div><img src="./images/calories-counting-cover-2-1.jpg" alt="photo of calories and food"></div>
     </div>
+     
 
+    <div id="mobile-download">
+        <p>As seen in</p>
+        <div>
+            <img src="https://cdn1.cronometer.com/webflow/media-mention-2.svg" alt="Womens health">
+            <img src="https://cdn1.cronometer.com/webflow/media-mention-1.svg" alt="lifehacker">
+            <img src="https://cdn1.cronometer.com/webflow/media-mention-3.svg" alt="mens journal">
+        </div>
+        <p>Avalible on Web,iOS and Android.</p>
+        <div>
+            <img src="https://cdn1.cronometer.com/webflow/ios-icon.svg" alt="iOS link">
+            <img src="https://cdn1.cronometer.com/webflow/android-icon.svg" alt="Andriod link">
+        </div>
+    </div>
+
+    <div id="habits">
+        <h2>Develop healthy habits</h2>
+        <p>count your calories, ensure you're meeting nutrient target, and <br>see your progress over time</p>
+        <div>
+            <div>
+                <img src="https://cdn1.cronometer.com/webflow/cronometer-features-11.svg" alt="track nutients">
+                <h3>Track up to 84 nutrients and other compounds</h3>
+                <p>Log your meals and track all your macro and micronutrients.</p>
+            </div>
+            <div>
+                <img src="https://cdn1.cronometer.com/webflow/cronometer-features-14.svg" alt="meals,exercise and health metrics">
+                <h3>Log meals, exercise and health metrics</h3>
+                <p>Plus, you can create custom foods, recipes, exercises and metrics.</p>
+            </div>
+            <div>
+                <img src="https://cdn1.cronometer.com/webflow/cronometer-features-13.svg" alt="Health reports and charts">
+                <h3>Get valuable health reports and charts</h3>
+                <p>Learn how nutrients and metrics correlate over time.</p>
+            </div>
+            <div>
+                <img src="https://cdn1.cronometer.com/webflow/cronometer-features-16.svg" alt="custom diet setting">
+                <h3>Custom diet settings</h3>
+                <p>Set weight, macro and nutrient targets to meet your goals.</p>
+            </div>
+            <div>
+                <img src="https://cdn1.cronometer.com/webflow/cronometer-features-15.svg" alt="Fasting timer">
+                <h3>Fasting timer</h3>
+                <p>Track your intermittent fasts and see their effect over time</p>
+            </div>
+            <div>
+                <img src="https://cdn1.cronometer.com/webflow/cronometer-features-12.svg" alt="diet support">
+                <h3>Diet support</h3>
+                <p>Whether you are Keto, Vegan, or on one recommended by your doctor.</p>
+            </div>
+        </div>
+    </div>
+  
 </body>
 
 </html>

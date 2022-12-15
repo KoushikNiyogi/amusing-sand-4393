@@ -2,7 +2,121 @@
     margin: 0;
     padding: 0;
 }
+/* styles for navigation bar */
+.header>:nth-child(1)>img{
+    width: 20%;
+    border-radius: 50%;
+}
+ 
 
+.header{
+    background-color: white;
+    box-shadow: 1px 1px 4px 0 rgb(0,0,0,.1);
+    
+}
+.header ul{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: white;
+}
+.header ul a{
+    display: block;
+    padding: 20px;
+    border: 1px solid #aaa;
+    text-decoration: none;
+}
+.header ul a:hover{
+    background-color: #ddd;
+}
+.header .logo{
+    float: left;
+    display: block;
+    padding: 10px 20px;
+}
+.header .menu{
+    clear: both;
+    max-height:0;
+    transition: max-height .2s ease-out;
+}
+
+.header .menu-icon{
+     padding: 28px 20px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+
+.header .menu-icon .nav-icon{
+    background: #333;
+    display: block;
+    height: 2px;
+    width: 18px;
+    position:relative;
+    transition:background .2s ease-out;
+}
+
+.header .menu-icon .nav-icon:before{
+    background: #333;
+    content:"";
+    display:  block;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    transition: all .2s ease-out;
+    top: 5px;
+}
+.header .menu-icon .nav-icon:after{
+    background: #333;
+    content:"";
+    display:  block;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    transition: all .2s ease-out;
+    top: -5px;
+}
+
+.header .menu-btn{
+    display: none;
+}
+
+.header .menu-btn:checked ~ .menu{
+    max-height: 360px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon{
+   background: transparent;
+}
+.header .menu-btn:checked ~ .menu-icon .nav-icon:before{
+    transform: rotate(-45deg);
+    top: 0;
+}
+.header .menu-btn:checked ~ .menu-icon .nav-icon:after{
+    transform: rotate(45deg);
+    top: 0;
+}
+
+@media (min-width:992px){
+    .header li{
+        float:left;
+        margin-top: 20px;
+    }
+    .header li a{
+        padding: 20px 30px;
+    }
+    .header .menu{
+        clear:none;
+        float:right;
+        max-height: none;
+         
+    }
+    .header .menu-icon{
+        display: none;
+    }
+   
+}
 /* sign up ad */
 
 #signupAd {
@@ -13,6 +127,7 @@
     justify-content: space-between;
     margin-top: 80px;
     margin: bottom 80px;
+    padding-top: 40px;
 }
 
 #signupAd>:nth-child(1) {
@@ -280,6 +395,73 @@ margin-right: 20px;
 #nutrimeterPro>:nth-child(3){
     padding: 40px;
 }
+
+/* styles for footer */
+
+#footer{
+    width: 100%;
+    background-color: #262a3b;
+    padding: 60px 0;
+}
+#part1{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+#part1>div{
+    width: 20%;
+}
+#part1>:nth-child(1){
+    width: 7%;
+}
+#part1>div>img{
+    width: 100%;
+    border-radius: 50%;
+}
+#part1>div>h3{
+    margin-bottom: 10px;
+}
+#part1>div p{
+    margin-bottom: 10px;
+}
+#footer>hr{
+background-color: white;
+margin-top: 10px;
+margin-bottom: 30px;
+}
+
+#part2{
+width: 80%;
+margin: auto;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+#part2>:nth-child(1){
+  width: 20%;
+}
+#part2>:nth-child(2){
+    width: 30%;
+}
+#part2>:nth-child(1)>div{
+    display: flex;
+    justify-content: space-around;
+}
+#part2>:nth-child(1)>div>img{
+    width: 10%;
+}
+#part2>:nth-child(2){
+    display: flex;
+    justify-content: space-around;
+}
+#part2>:nth-child(2)>img{
+    width: 40%;
+}
+
+
+
 @media all and (max-width:767px) {
     #signupAd {
 
@@ -368,6 +550,18 @@ margin-right: 20px;
        margin-bottom: 20px;
         
     }
+    #part1{
+        flex-direction: column;
+    }
+    #part1>div{
+        margin-bottom: 10px;
+    }
+    #part2{
+        flex-direction: column;
+    }
+    #part2>div{
+        margin-bottom: 10px;
+    }
 }
 @media all and (max-width:479px){
     #habits>:nth-child(3){
@@ -393,4 +587,18 @@ margin-right: 20px;
        margin-bottom: 20px;
         
     }
+    #part1{
+        flex-direction: column;
+    }
+    #part1>div{
+        margin-bottom: 10px;
+    }
+    #part2{
+        flex-direction: column;
+    }
+    #part2>div{
+        margin-bottom: 10px;
+    }
 }
+
+

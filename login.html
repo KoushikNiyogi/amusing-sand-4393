@@ -4,9 +4,128 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>NUTRIMETER - LOGIN PAGE</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #navBar{
+            width: 100%;
+            background-color: #262a3b;
+            color: white;
+        }
+        #navBar>div{
+            width: 30%;
+            display: flex;
+            align-items: center;
+        }
+        #navBar>div>img{
+            width: 20%;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        body{
+            background-color: #fffcf6;
+        }
+        #login{
+            width: 50%;
+            margin: auto;
+            margin-top: 40px;
+        }
+        form{
+            background-color: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 25px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            border-radius: 5px;
+        }
+        form>input,label{
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input[type="submit"]{
+            width: 50%;
+            margin: auto;
+            background-color: #005c5c;
+            color: white;
+            border: none;
+            padding: 5px 0;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="text"]{
+            padding: 5px;
+        }
+        input[type="password"]{
+            padding: 5px;
+        }
+        form>h2{
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        input[type="submit"]~p{
+            text-align: center;
+          
+        }
+        form a{
+            display: grid;
+            justify-content: center;
+            margin-bottom:10px;
+        }
+    </style>
 </head>
 <body>
-    HI IM LOGIN PAGE
+   <div id="navBar">
+    <div>
+        <img src="./images/NUTRI.png" alt="">
+        <h1>NUTRIMETER</h1>
+    </div>
+   </div>
+   <div id="login">
+      <form >
+        <h2>Welcome Back</h2>
+        <label for="">Email</label>
+        <input type="text" name="" id="logiNemail" placeholder="Email Address">
+        <label for="">Password</label>
+        <input type="password" name="" id="logiNpassword" placeholder="Password">
+        <p id="invaliDate"></p>
+        <input type="submit" value="LOG IN">
+        <a href="#">Forgot your password?</a>
+        <p>Not a member?</p>
+        <a href="signup.html">Sign Up</a>
+      </form>
+   </div>
 </body>
 </html>
+<script>
+    let loginData = JSON.parse(localStorage.getItem("signupdata"));
+    let invaliDate = document.querySelector("#invaliDate")
+    let form = document.querySelector("form");
+    form.addEventListener("submit",loginfunction);
+    function loginfunction(event){
+      event.preventDefault();
+      let email = form.logiNemail.value;
+      let password = form.logiNpassword.value;
+      let temp;
+      let flag = false;
+      loginData.forEach(element => {
+        if(email == element.email){
+            flag = true;
+            temp = element;
+        }
+      });
+      if(flag == false){
+        invaliDate.textContent = "User is not registered";
+      }else{
+        if(password!==temp.password){
+            invaliDate.textContent = "Enter Correct Password";
+        }else{
+            localStorage.setItem("user",JSON.stringify(temp));
+            window.location.assign("dashboard.html");
+        }
+      }
+    }
+</script>

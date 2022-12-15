@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #navBar {
+            width: 100%;
+            background-color: #262a3b;
+            color: white;
+        }
+
+        #navBar>div {
+            width: 30%;
+            display: flex;
+            align-items: center;
+        }
+
+        #navBar>div>img {
+            width: 20%;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        body {
+            background-color: #fffcf6;
+        }
+        #signUp{
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+            margin-top: 40px;
+        }
+        #part1{
+            padding: 15px;
+            box-shadow:rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            background-color: white;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        #part1>div{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            
+        }
+        input,select{
+            width: 300px;
+            padding: 5px;
+        }
+        #part2{
+            padding: 15px;
+            box-shadow:rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            background-color: white;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        #part2>div{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            
+        }
+        #signup{
+            padding: 5px 25px;
+            background-color: #005c5c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom:10px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navBar">
+        <div>
+            <img src="./images/NUTRI.png" alt="">
+            <h1>NUTRIMETER</h1>
+        </div>
+    </div>
+
+    <div id="signUp">
+        <h2>Create Your Free Account</h2>
+        <p id="showError"></p>
+        <div id="part1">
+            <div>
+                <label for="">Email</label>
+                <input type="text" id="signUpemail" placeholder="Email address">
+            </div>
+            <div>
+                <label for="">Password</label>
+                <input type="text" id="signUppassword" placeholder="Email password">
+            </div>
+            <div>
+                <label for="">Confirm password</label>
+                <input type="password" id="correctPassword" placeholder="Correct password">
+            </div>
+        </div>
+        <div id="part2">
+            <h3>Your Body Type</h3>
+            <div>
+                <label for="">Sex</label>
+                <select id="sexofPerson">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div>
+                <label for="">Height</label>
+                <input type="number" name="" id="height" placeholder="Height in cms">
+            </div>
+            <div>
+                <label for="">Weight</label>
+                <input type="number" name="" id="weight" placeholder="Weight in kg">
+            </div>
+            
+        </div>
+        <p>On clicking sign up considered to agree all terms and condition</p>
+            <button id="signup">SIGN UP</button>
+            <p>If you are user - login</p>
+            <a href="login.html">Log In</a>
+    </div>
+</body>
+
+</html>
+<script>
+    let signup = document.querySelector("#signup").addEventListener("click",myfunction);
+    let signupData = JSON.parse(localStorage.getItem("signupdata"))||[];
+    let showError = document.querySelector("#showError")
+    function myfunction(){
+        let email = document.querySelector("#signUpemail").value;
+        let password = document.querySelector("#signUppassword").value;
+        let correctPassword = document.querySelector("#correctPassword").value;
+        let gender = document.querySelector("#sexofPerson").value;
+        let height = document.querySelector("#height").value;
+        let weight = document.querySelector("#weight").value;
+        let obj = {};
+        console.log(email,password,correctPassword,gender,height,weight);
+
+        let flag = false;
+        signupData.forEach((element,i) => {
+            if(email === element.email){
+                flag = true;
+            }
+        });
+
+        if(flag == true){
+           showError.textContent = "User already exists";
+        }else{
+            if(password !== correctPassword){
+                showError.textContent = "Passwords Do Not Match";
+            }else{
+                if(email!=""&&password!=""&&correctPassword!=""&&gender!=""&&height!=""&&weight!=""){
+                  obj = {
+                    email,
+                    password,
+                    correctPassword,
+                    gender,
+                    height,
+                    weight
+                  }
+                  console.log(obj);
+                  signupData.push(obj);
+                  localStorage.setItem("signupdata",JSON.stringify(signupData));
+                  window.location.assign("login.html");
+                }else{
+                    showError.textContent = "Fill all details";
+                }
+            }
+        }
+    }
+</script>

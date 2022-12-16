@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/02fd71c999.js" crossorigin="anonymous"></script>
+
+    <title>NM - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+         
+        #dashboard {
+            display: flex;
+        }
+
+        #dashboard>#part1 {
+            width: 15%;
+            height: 1200px;
+            background-color: #272a3a;
+            color: white;
+            padding: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            position: fixed;
+            left:0;
+            overflow-y: scroll;
+        }
+
+        #logo {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        #logo+hr {
+            margin: 20px 0px;
+        }
+
+        #logo>img {
+            width: 20%;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        #part1 a {
+            text-decoration: none;
+            display: block;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        #part1>a>div {
+            display: flex;
+            margin-bottom: 20px;
+
+        }
+
+        #part1>a>div>h3 {
+            margin-left: 10px;
+
+        }
+
+        #part1>button {
+            width: 100%;
+            color: white;
+            background-color: #272a3a;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        #part1> button>h3 {
+            float: left;
+            margin-left: 10px;
+        }
+
+        .fa-chart-column {
+            float: left;
+        }
+
+        .fa-angle-down {
+            float: right;
+
+        }
+
+        .fa-apple-whole {
+            float: left;
+        }
+
+        .fa-gear {
+            float: left;
+        }
+
+        .active {
+            background-color: green;
+            color: white;
+        }
+
+        .dropdown-container1 {
+            display: none;
+            padding-left: 30px;
+        }
+        #part2{
+            height:10000px;
+        }
+        body{
+            background-color: #fffcf6;
+        }
+    </style>
+</head>
+
+<body>
+    <div: id="dashboard">
+        <div id="part1">
+            <div id="logo">
+                <img src="./images/NUTRI (1)2.png" alt="">
+                <h4>Nutrimeter</h4>
+            </div>
+            <hr>
+            <a href="">
+                <div>
+                    <i class="fa-sharp fa-solid fa-table-columns"></i>
+                    <h3>Dashboard</h3>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <i class="fa-sharp fa-solid fa-book"></i>
+                    <h3>Dairy</h3>
+                </div>
+            </a>
+
+            <button class="dropdown-btn">
+                <i class="fa-solid fa-chart-column"></i>
+                <h3>Trends</h3>
+                <i class="fa-solid fa-angle-down"></i>
+            </button>
+            <div class="dropdown-container1">
+                <a href="">Charts</a>
+                <a href="">Nutrition Reports</a>
+                <a href="">Print Reports</a>
+                <a href="">Snapshots</a>
+            </div>
+            <button class="dropdown-btn">
+                <i class="fa-sharp fa-solid fa-apple-whole"></i>
+                <h3>Food</h3>
+                <i class="fa-solid fa-angle-down"></i>
+            </button>
+            <div class="dropdown-container1">
+                <a href="">Custom Recipies</a>
+                <a href="">Custom Foods</a>
+                <a href="">Ask the Oracle</a>
+                <a href="">Searrch Foods</a>
+            </div>
+            <button class="dropdown-btn">
+                <i class="fa-solid fa-gear"></i>
+                <h3>Settings</h3>
+                <i class="fa-solid fa-angle-down"></i>
+            </button>
+            <div class="dropdown-container1">
+                <a href="">Account</a>
+                <a href="">Fasting</a>
+                <a href="">Display</a>
+                <a href="">Devices</a>
+            </div>
+
+            <a href="plans.html">
+                <div>
+                    <i class="fa-sharp fa-solid fa-dollar-sign"></i>
+                    <h3>Plans</h3>
+                </div>
+            </a>
+
+
+            <a href="#">
+                <div>
+                    <i class="fa-solid fa-circle-question"></i>
+                    <h3>Help</h3>
+                </div>
+            </a>
+
+            <a href="#">
+                <div>
+                    <i class="fa-solid fa-circle-info"></i>
+                    <h3>About</h3>
+                </div>
+            </a>
+        </div>
+        <div id="part2">
+
+        </div>
+    </div:>
+</body>
+
+</html>
+
+<script>
+   var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+console.log(dropdown);
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRIMETER - LOGIN PAGE</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #navBar{
+            width: 100%;
+            background-color: #262a3b;
+            color: white;
+        }
+        #navBar>div{
+            width: 30%;
+            display: flex;
+            align-items: center;
+        }
+        #navBar>div>img{
+            width: 20%;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        body{
+            background-color: #fffcf6;
+        }
+
+        /* styles for form */
+
+        #payment>form{
+          max-width: 300px;
+          margin: auto;
+          text-align: center;
+        }
+        input,label{
+            display: block;
+            text-align: left;
+            width:100%;
+            margin-bottom:10px;
+        }
+        #payment input{
+            padding: 5px;
+        }
+        #payment>form>input[type="submit"]{
+            width: 40%;
+            margin: auto;
+            text-align: center;
+            font-weight: bold;
+            background-color: #262a3b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #payment>div{
+            padding: 10px;
+            max-width: 300px;
+            margin: auto;
+            
+        }
+        #payment>div>h3{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        #payment>div>button{
+           width: 40%;
+           margin-left: 30%;
+           font-weight: bold;
+            background-color: #262a3b;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        #displaypaymentStatus{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <div id="navBar">
+    <div>
+        <img src="./images/NUTRI.png" alt="">
+        <h1>NUTRIMETER</h1>
+    </div>
+   </div>
+   <h1 id="displaypaymentStatus"></h1>
+   <div id="payment">
+    <form >
+        <h1 id="Title"></h1>
+        <h3>Total Bill: <span id="totalbill"></span></h3>
+        <label for="">Name</label>
+        <input type="text" placeholder="Enter Name" id="name">
+        <label for="">Email</label>
+        <input type="text" placeholder="Enter email address" id="email">
+        <label for="">Card Details</label>
+        <input type="text" placeholder="Enter card details" id="card">
+        <label for="">Expiry Date</label>
+        <input type="month" name="" id="month">
+        <label for="">CVV</label>
+        <input type="number" id="cvv" placeholder="Enter cvv">
+        <input type="submit" value="Continue">
+    </form>
+    <div>
+        <h3>Enter OTP</h3>
+        <input type="number" placeholder="Enter OTP" id="otpGenerated">
+        <button id="checkOtp">Enter OTP</button>
+    </div>
+      
+   </div>
+</body>
+</html>
+<script>
+    let paymentData = JSON.parse(localStorage.getItem("paymentFor"));
+    console.log(paymentData);
+
+    document.querySelector("#Title").textContent = paymentData[0];
+    document.querySelector("#totalbill").textContent = paymentData[1];
+    let heading = document.querySelector("#displaypaymentStatus");
+    let otp ;
+    let form = document.querySelector("form");
+    form.addEventListener("submit",function(event){
+        event.preventDefault();
+        let name = form.name.value;
+        let email = form.email.value;
+        let card = form.card.value;
+        let month = form.month.value;
+        let cvv = form.cvv.value;
+        console.log(name,email,card,month,cvv);
+        if(name!=""&&email!=""&&card!=""&&month!=""&&cvv!=""){
+            otp = Math.floor(Math.random()*10000);
+            alert("Your otp is : "+otp);
+
+        }else{
+            heading.textContent = "Please Enter all Details";
+            heading.style.color = "red";
+        }
+    });
+
+    document.querySelector("#checkOtp").addEventListener("click",function(){
+       let Enteredotp = document.querySelector("#otpGenerated").value;
+       if(Enteredotp == otp){
+          heading.textContent = "Payment Successful";
+          heading.style.color = "green";
+          paymentData.push(true);
+          localStorage.setItem("paymentFor",JSON.stringify(paymentData));
+          setTimeout(() => {
+            window.location.assign("dashboard.html");
+          }, 3000);
+       }else{
+          heading.textContent = "Payment Unsuccessful";
+          heading.style.color = "red";
+          paymentData.push(false);
+          localStorage.setItem("paymentFor",JSON.stringify(paymentData));
+
+       }
+    });
+</script>

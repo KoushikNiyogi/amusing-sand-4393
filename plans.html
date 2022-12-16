@@ -13,7 +13,7 @@
             margin: 0;
             padding: 0;
         }
-         
+         /* ----------------styles for part1 --------------- */
         #dashboard {
             display: flex;
         }
@@ -103,6 +103,9 @@
             display: none;
             padding-left: 30px;
         }
+
+        /* ----------------styles for part2 ------------ */
+        /* styles for part 2 navbar */
         #part2{
             width: 85%;
             margin-left: 17%;
@@ -132,6 +135,8 @@
         body{
             background-color: #fffcf6;
         }
+
+        /* styles for dropdown account */
         .account-wrap{
             position: absolute;
             top: 7%;
@@ -162,6 +167,49 @@
             margin-top: 10px;
             padding:5px 10px;
         }
+
+        /* styles for plans */
+        #plansNutrimeter{
+            width:80%;
+            margin: auto;
+        }
+        #plansNutrimeter>h2{
+            margin-top: 20px;
+        }
+        #plansNutrimeter>div{
+            display: flex;
+            padding: 20px;
+            justify-content: space-between;
+            background-color: white;
+            margin: 20px 0;
+            border-radius:10px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+        #plansNutrimeter>div ul{
+            padding: 20px;
+        }
+        #plansNutrimeter>div ul li{
+            margin-bottom: 10px;
+        }
+        #plansNutrimeter>div>div>h2{
+            margin-bottom: 10px;
+        }
+        #plansNutrimeter>div>div>p{
+            margin-bottom: 10px;
+        }
+        #plansNutrimeter>div>div>button{
+            background-color: #ff6733;
+            border: none;
+            padding: 5px 25px;
+            color: black;
+            border-radius: 4px;
+        }
+        .NutrimeterGold{
+            color: #ffad00;
+        }
+        .NutrimeterPro{
+            color: #5cd68c;
+        }
     </style>
 </head>
 
@@ -173,7 +221,7 @@
                 <h4>Nutrimeter</h4>
             </div>
             <hr>
-            <a href="">
+            <a href="dashboard.html">
                 <div>
                     <i class="fa-sharp fa-solid fa-table-columns"></i>
                     <h3>Dashboard</h3>
@@ -262,7 +310,71 @@
                 </div>
             </div>
           </div>
+
+          <div id="plansNutrimeter">
+            <h2>Plans for indivisuals</h2>
+            <div>
+                <div>
+                    <h1 id="nutrimeterGoldh1">Nutrimeter <span class="NutrimeterGold">Gold</span></h1>
+                    <p>Reach your goals faster with gold</p>
+                    <ul>
+                        <li>No ads!</li>
+                        <li>Import reciepies via url</li>
+                        <li>Dairy groups and timestamps</li>
+                        <li>Target scheduler</li>
+                        <li>Fsting timer</li>
+                        <li>Nutrition scores</li>
+                        <li>Plus all our premium features!</li>
+                    </ul>
+
+                </div>
+
+                <div>
+                    <h2 id="nutrimeterGoldprice">$49.99</h2>
+                    <p>USD per Year-billed annnualy</p>
+                    <button id="nutrimeterGold">SUBSCRIBE NOW</button>
+               
+                </div>
         </div>
+        <h2>Gift Subscription</h2>
+        <div>
+               <div>
+                <h1 id="giftnutrimeterGoldh1">Give Nutrimeter <span class="NutrimeterGold">Gold</span></h1>
+                <p>Give the gift of Gold and purchase a one-year <br>
+                    subscription for a friend or family member.</p>
+               </div>
+               <div>
+                  <h2 id="giftnutrimeterGoldprice">$49.99</h2>
+                  <p>USD per Year-billed annnualy</p>
+                  <button id="giftnutrimeterGold">SUBSCRIBE NOW</button>
+               </div>
+        </div>
+        <h2>Plans for Professionals</h2>
+            <div>
+                <div>
+                    <h1 id="nutrimeterProh1">Nutrimeter <span class="NutrimeterPro">Pro</span></h1>
+                    <p>Our professional version for health coaches and trainers.<br>
+                        Monitor your clients Cronometer accounts.</p>
+                    <ul>
+                        <li>Includes 10 client seats -- add more <br> for $2.25 per month</li>
+                        <li>Manage clients Cronometer settings <br> and data</li>
+                        <li>View your clients’ diary at any time to <br> monitor compliance</li>
+                        <li>Share custom foods and recipes with <br> your clients</li>
+                        <li>Chat with clients using secure <br> internal messaging</li>
+                        
+                    </ul>
+
+                </div>
+
+                <div>
+                    <h2 id="nutrimeterProprice">$29.99</h2>
+                    <p>USD per Year-billed annnualy</p>
+                    <button id="nutrimeterPro">SUBSCRIBE NOW</button>
+               
+                </div>
+        </div>
+        </div>
+        
     </div>
 </body>
 
@@ -296,4 +408,36 @@ function myfunction2(){
 document.querySelector("#logoutDashboard").addEventListener("click",function(){
     window.location.assign("index.html");
 });
+  
+
+document.querySelector("#nutrimeterGold").addEventListener("click",function(){
+    let arr = [];
+    let heading = document.querySelector("#nutrimeterGoldh1").textContent;
+    let totalprice = document.querySelector("#nutrimeterGoldprice").textContent;
+    arr.push(heading);
+    arr.push(totalprice);
+    localStorage.setItem("paymentFor",JSON.stringify(arr));
+    window.location.assign("payment.html");
+});
+
+document.querySelector("#giftnutrimeterGold").addEventListener("click",function(){
+    let arr = [];
+    let heading = document.querySelector("#giftnutrimeterGoldh1").textContent;
+    let totalprice = document.querySelector("#giftnutrimeterGoldprice").textContent;
+    arr.push(heading);
+    arr.push(totalprice);
+    localStorage.setItem("paymentFor",JSON.stringify(arr));
+    window.location.assign("payment.html");
+});
+
+document.querySelector("#nutrimeterPro").addEventListener("click",function(){
+    let arr = [];
+    let heading = document.querySelector("#nutrimeterProh1").textContent;
+    let totalprice = document.querySelector("#nutrimeterProprice").textContent;
+    arr.push(heading);
+    arr.push(totalprice);
+    localStorage.setItem("paymentFor",JSON.stringify(arr));
+    window.location.assign("payment.html");
+})
+
 </script>

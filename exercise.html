@@ -182,65 +182,33 @@
             text-decoration: none;
             color: black;
          }
-
-         /* dashboard table */
-         #part2>table{
-            width: 90%;
+        
+         #part2>form{
+            max-width: 300px;
+            margin: auto;
             background-color: white;
-            margin-left: 10px;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            padding: 20px;
             margin-top: 20px;
-            text-align: center;
-            padding: 10px;
+            border-radius: 5px;
          }
-         /* styles for dashboard targets */
-
-         #dashboardTargets{
-            width: 90%;
-            background-color: white;
-            margin-left: 10px;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-            margin-top: 20px;
-            padding:10px;
-            display: flex;
-
+         #part2>form>input,label{
+            width: 100%;
+            display: block;
+            margin: 10px 0px;
+            padding: 5px;
          }
-          #dashboardTargets>:nth-child(1){
+         #part2>form>input[type="submit"]{
             width: 50%;
-            display: flex;
-            padding: 10px;
-            text-align: center;
-            border-right: 2px solid black;
-          }
-          #dashboardTargets>:nth-child(1)>:nth-child(1)>h1{
-            color:#44d07b;
-          }
-          #dashboardTargets>:nth-child(1)>:nth-child(2)>h1{
-            color:#ea3b04;
-          }
-          #dashboardTargets>:nth-child(1)>:nth-child(3)>h1{
-            color:#f38d00;
-          }
-          #dashboardTargets>:nth-child(2){
-            width: 50%;
-            padding: 10px;
-          }
-          #dashboardTargets>:nth-child(2)>table{
-            width:100%;
-            text-align: center;
-          }
-          #percentenergy{
-            color: #9da0ad;
-          }
-          #percentprotein{
-            color: #44d07b;
-          }
-          #percentcarbs{
-            color: #1ccad7;
-          }
-          #perrcentfat{
-            color: #ea3b04;
-          }
+            margin: auto;
+            padding: 5px 10px;
+            color: white;
+            background-color: #272a3a;
+            border: none;
+            border-radius: 5px;
+         }
+         
+         
     </style>
 </head>
 
@@ -355,74 +323,18 @@
                 <a href="#">Biometric</a>
                 <a href="#">Note</a>
             </div>
-            
           </div>
-          <table>
-            <thead>
-                <th>Name</th>
-                <th>Quantity(cup for food/min for exercise)</th>
-                <th>Energy</th>
-            </thead>
-            <tbody id="dashboardAppend">
-
-            </tbody>
-        </table>
-
-        <div id="dashboardTargets">
-            <div>
-                <div>
-                  <h1><span id="totalcalories"></span>/2841</h1>
-                  <h3>Total Calories Consumed</h3>
-                </div>
-                <div>
-                    <h1><span id="caloriesremaining"></span>/2841</h1>
-                    <h3>Total Calories Remaining</h3>
-                </div>
-                <div>
-                    <h1><span id="caloriesBurnt"></span>/<span id="Totalcalories"></span></h1>
-                    <h3>Total Calories Burnt</h3>
-                </div>
-
-            </div>
-
-            <div>
-            <h3>Macronutient Targets</h3>
-            <table>
-                 <thead>
-                   <th>Macronutrients</th>
-                   <th>Total</th>
-                   <th>Target</th>
-                   <th>Percentage</th>
-                 </thead>
-                 <tbody>
-                   <tr>
-                    <th>Energy</th>
-                    <td id="totalenergy"></td>
-                    <td>2481 kcal</td>
-                    <td id="percentenergy"></td>
-                   </tr>
-                   <tr>
-                    <th>Protein</th>
-                    <td id="totalprotein"></td>
-                    <td>177.6g</td>
-                    <td id="percentprotein"></td>
-                   </tr>
-                   <tr>
-                    <th>NetCarbs</th>
-                    <td id="totalcarbs"></td>
-                    <td>319.6</td>
-                    <td id="percentcarbs"></td>
-                   </tr>
-                   <tr>
-                    <th>Fat</th>
-                    <td id="totalfat"></td>
-                    <td>94.7g</td>
-                    <td id="perrcentfat"></td>
-                   </tr>
-                 </tbody>
-            </table>
-            </div>
-        </div>
+           
+          <form>
+            <label for="">Name of Exercise</label>
+            <input type="text" placeholder="Enter name" id="exercise">
+            <label for="">Duration</label>
+            <input type="number" placeholder="Enter time in minutes" id="duration">
+            <label for="">Energy Burned</label>
+            <input type="number" placeholder="Energy burnt in kcal" id="energyBurnt">
+            <input type="submit" value="Add to Dashboard" id="submitForm">
+          </form>
+         
         </div>
     </div>
 </body>
@@ -458,79 +370,37 @@ document.querySelector("#logoutDashboard").addEventListener("click",function(){
     window.location.assign("index.html");
 });
 
+
+
+
 let planPurchase = JSON.parse(localStorage.getItem("paymentFor"))||[];
 if(planPurchase[3]===true){
     document.querySelector("#colorspan").textContent = planPurchase[1];
 }else{
     document.querySelector("#colorspan").textContent = "Basic";
 }
+let temp = JSON.parse(localStorage.getItem("dashboardData"))||[];
+let form = document.querySelector("form");
+form.addEventListener("submit",storeEnergy);
 
-let dashboardData = JSON.parse(localStorage.getItem("dashboardData"));
-let reduceData = JSON.parse(localStorage.getItem("reduceData"));
-displaytable(dashboardData);
+function storeEnergy(event){
+  event.preventDefault();
+  let arr = [];
+  let obj = {};
+  let name = form.exercise.value;
+  let duration = form.duration.value;
+  let Energy = form.energyBurnt.value;
 
-function displaytable(dashboardData){
-    document.querySelector("#dashboardAppend").innerHTML = null;
-    let totalcalories = reduceData.reduce((sum,current)=>{
-        let calories = +current.Energy;
-        return sum+calories;
-    },0);
-    let totalprotein = reduceData.reduce((sum,current)=>{
-        let protein = +current.Protein;
-        return sum+protein;
-    },0);
-    let proteinPercent = (totalprotein/177.6)*100;
-    let totalNetcarbs = reduceData.reduce((sum,current)=>{
-        let Netcarbs = +current.Netcarbs;
-        return sum+Netcarbs;
-    },0);
-    let NetcarbsPercent = (totalNetcarbs/319.6)*100;
-    let totalFat = reduceData.reduce((sum,current)=>{
-        let Fat = +current.Fat;
-        return sum+Fat;
-    },0);
-    let FatPercent = (totalFat/94.7)*100;
-    let remaining = 2841 - totalcalories;
-    let Netcal = dashboardData.reduce((sum,current)=>{
-        let energy;
-        if(current[0]=="food"){
-           energy = +current[1].Energy; 
-        }else{
-           energy = +(current[1].Energy*-1);
-        }
-        return sum+energy;
-    },0);
-
-    let energyPercent = (totalcalories/2481)*100;
-    let energy = totalcalories-Netcal;
-    document.querySelector("#totalcalories").textContent = totalcalories;
-    document.querySelector("#caloriesremaining").textContent = remaining;
-    document.querySelector("#caloriesBurnt").textContent = energy;
-    document.querySelector("#Totalcalories").textContent = totalcalories;
-    document.querySelector("#totalenergy").textContent = totalcalories;
-    document.querySelector("#percentenergy").textContent = energyPercent.toFixed(0)+"%";
-    document.querySelector("#totalprotein").textContent = totalprotein;
-    document.querySelector("#percentprotein").textContent = proteinPercent.toFixed(0)+"%";
-    document.querySelector("#totalcarbs").textContent = totalNetcarbs;
-    document.querySelector("#percentcarbs").textContent = NetcarbsPercent.toFixed(0)+"%";
-    document.querySelector("#totalfat").textContent = totalFat;
-    document.querySelector("#perrcentfat").textContent = FatPercent.toFixed(0)+"%";
-    console.log(totalcalories,remaining,energy);
-    dashboardData.forEach((element,index) => {
-        let row = document.createElement("tr");
-        let name = document.createElement("td");
-        name.textContent = element[1].name;
-        let Energy = document.createElement("td");
-        if(element[0]=="food"){
-            Energy.textContent = element[1].Energy;
-        }else{
-            Energy.textContent = (element[1].Energy*-1); 
-        }
-        let Quantity = document.createElement("td");
-        Quantity.textContent = element[2];
-
-        row.append(name,Quantity,Energy);
-        document.querySelector("#dashboardAppend").append(row);
-    });
+  if(name!=""&&duration!=""&&Energy!=""){
+    obj = {
+        name,
+        Energy
+    }
+    arr.push("exercise");
+    arr.push(obj);
+    arr.push(duration);
+    temp.push(arr);
+    localStorage.setItem("dashboardData",JSON.stringify(temp));
+  }
 }
 </script>

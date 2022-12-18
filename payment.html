@@ -133,7 +133,8 @@
         if(name!=""&&email!=""&&card!=""&&month!=""&&cvv!=""){
             otp = Math.floor(Math.random()*10000);
             alert("Your otp is : "+otp);
-
+            console.log(otp);
+            
         }else{
             heading.textContent = "Please Enter all Details";
             heading.style.color = "red";
@@ -155,7 +156,7 @@
           heading.style.color = "red";
           paymentData.push(false);
           localStorage.setItem("paymentFor",JSON.stringify(paymentData));
-
+          location.reload();
        }
     });
 </script>

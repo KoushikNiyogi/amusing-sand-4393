@@ -315,7 +315,7 @@
             <h2>Plans for indivisuals</h2>
             <div>
                 <div>
-                    <h1 id="nutrimeterGoldh1">Nutrimeter <span class="NutrimeterGold">Gold</span></h1>
+                    <h1 id="nutrimeterGoldh1">Nutrimeter <span id="NutrimeterGoldspan">Gold</span></h1>
                     <p>Reach your goals faster with gold</p>
                     <ul>
                         <li>No ads!</li>
@@ -339,7 +339,7 @@
         <h2>Gift Subscription</h2>
         <div>
                <div>
-                <h1 id="giftnutrimeterGoldh1">Give Nutrimeter <span class="NutrimeterGold">Gold</span></h1>
+                <h1 id="giftnutrimeterGoldh1">Give Nutrimeter <span id="NutrimeterGoldspan2">Gold</span></h1>
                 <p>Give the gift of Gold and purchase a one-year <br>
                     subscription for a friend or family member.</p>
                </div>
@@ -352,7 +352,7 @@
         <h2>Plans for Professionals</h2>
             <div>
                 <div>
-                    <h1 id="nutrimeterProh1">Nutrimeter <span class="NutrimeterPro">Pro</span></h1>
+                    <h1 id="nutrimeterProh1">Nutrimeter <span id="NutrimeterProspan">Pro</span></h1>
                     <p>Our professional version for health coaches and trainers.<br>
                         Monitor your clients Cronometer accounts.</p>
                     <ul>
@@ -381,7 +381,8 @@
 </html>
 
 <script>
-   var dropdown = document.getElementsByClassName("dropdown-btn");
+var dropdown = document.getElementsByClassName("dropdown-btn");
+
 var i;
 console.log(dropdown);
 for (i = 0; i < dropdown.length; i++) {
@@ -413,8 +414,10 @@ document.querySelector("#logoutDashboard").addEventListener("click",function(){
 document.querySelector("#nutrimeterGold").addEventListener("click",function(){
     let arr = [];
     let heading = document.querySelector("#nutrimeterGoldh1").textContent;
+    let span = document.querySelector("#NutrimeterGoldspan").textContent;
     let totalprice = document.querySelector("#nutrimeterGoldprice").textContent;
     arr.push(heading);
+    arr.push(span);
     arr.push(totalprice);
     localStorage.setItem("paymentFor",JSON.stringify(arr));
     window.location.assign("payment.html");
@@ -423,8 +426,11 @@ document.querySelector("#nutrimeterGold").addEventListener("click",function(){
 document.querySelector("#giftnutrimeterGold").addEventListener("click",function(){
     let arr = [];
     let heading = document.querySelector("#giftnutrimeterGoldh1").textContent;
+    let span = document.querySelector("#NutrimeterGoldspan2").textContent;
+
     let totalprice = document.querySelector("#giftnutrimeterGoldprice").textContent;
     arr.push(heading);
+    arr.push(span);
     arr.push(totalprice);
     localStorage.setItem("paymentFor",JSON.stringify(arr));
     window.location.assign("payment.html");
@@ -433,11 +439,20 @@ document.querySelector("#giftnutrimeterGold").addEventListener("click",function(
 document.querySelector("#nutrimeterPro").addEventListener("click",function(){
     let arr = [];
     let heading = document.querySelector("#nutrimeterProh1").textContent;
+    let span = document.querySelector("#NutrimeterProspan").textContent;
+
     let totalprice = document.querySelector("#nutrimeterProprice").textContent;
     arr.push(heading);
+    arr.push(span);
+
     arr.push(totalprice);
     localStorage.setItem("paymentFor",JSON.stringify(arr));
     window.location.assign("payment.html");
 })
+
+let planPurchase = JSON.parse(localStorage.getItem("paymentFor"));
+if(planPurchase[3]===true){
+    document.querySelector("#colorspan").textContent = planPurchase[1];
+}
 
 </script>

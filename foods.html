@@ -183,64 +183,61 @@
             color: black;
          }
 
-         /* dashboard table */
-         #part2>table{
-            width: 90%;
-            background-color: white;
+         #functionality{
+            width: 80%;
             margin-left: 10px;
+            padding: 5px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            background-color: white;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-            margin-top: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+         }
+         #table{
+            width: 90%;
+            max-height: 400px;
+            margin-top: 30px;
+            overflow: hidden;
+            overflow-y:visible;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            border-radius: 10px;
+            margin-left: 10px;
             padding: 10px;
          }
-         /* styles for dashboard targets */
-
-         #dashboardTargets{
-            width: 90%;
-            background-color: white;
+         table{
+            width: 100%;
             margin-left: 10px;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-            margin-top: 20px;
-            padding:10px;
-            display: flex;
-
+            margin-top: 10px;
+            border-radius: 5px;
+            text-align: center;
          }
-          #dashboardTargets>:nth-child(1){
-            width: 50%;
+         
+         td,th{
+            padding: 10px 30px;
+         }
+         #part2>div>h3{
+            margin: 20px 0 20px 10px;
+        }
+        #dashboardQuantity{
             display: flex;
+            justify-content: space-between;
+            width: 90%;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            border-radius: 10px;
+            margin-left: 10px;
             padding: 10px;
-            text-align: center;
-            border-right: 2px solid black;
-          }
-          #dashboardTargets>:nth-child(1)>:nth-child(1)>h1{
-            color:#44d07b;
-          }
-          #dashboardTargets>:nth-child(1)>:nth-child(2)>h1{
-            color:#ea3b04;
-          }
-          #dashboardTargets>:nth-child(1)>:nth-child(3)>h1{
-            color:#f38d00;
-          }
-          #dashboardTargets>:nth-child(2){
-            width: 50%;
-            padding: 10px;
-          }
-          #dashboardTargets>:nth-child(2)>table{
-            width:100%;
-            text-align: center;
-          }
-          #percentenergy{
-            color: #9da0ad;
-          }
-          #percentprotein{
-            color: #44d07b;
-          }
-          #percentcarbs{
-            color: #1ccad7;
-          }
-          #perrcentfat{
-            color: #ea3b04;
-          }
+            margin-top: 10px;
+            background-color: white;
+        }
+        #addtoDashboard{
+            padding: 5px 25px;
+            background-color: #272a3a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -342,7 +339,7 @@
             </div>
           </div>
           <h3>Your Dashboard</h3>
-          <div id="dashboard">
+          <div id="part2dashboard">
             
             <div id="dashboardNav">
                 <h2>Categorys</h2>
@@ -355,74 +352,49 @@
                 <a href="#">Biometric</a>
                 <a href="#">Note</a>
             </div>
-            
+            <div id="functionality">
+                <select name="" id="categoryFilter">
+                    <option value="">Select Category</option>
+                    <option value="category 1">Category 1</option>
+                    <option value="category 2">Category 2</option>
+                    <option value="category 3">Category 3</option>
+                    <option value="category 4">Category 4</option>
+                    <option value="category 5">Category 5</option>
+                </select>
+
+                <select name="" id="sortFilter">
+                    <option value="">Sort by Energy</option>
+                    <option  value="LTHe">Low to high - Energy</option>
+                    <option  value="HTLe">High to low - Energy</option>
+                </select>
+            </div>
+            <h3>Select Your Food</h3>
+            <div id="table">
+                <table>
+                    <thead>
+                        <th>Name</th>
+                        <th>Energy</th>
+                        <th>Protien</th>
+                        <th>Net carbs</th>
+                        <th>Fat</th>
+                        <th>Add to Dashboard</th>
+                    </thead>
+                    
+                    <tbody id="foodcontainer">
+                        
+                    </tbody>
+                </table>
+
+            </div>
+              <div id="dashboardQuantity">
+                 <div>
+                    <label for="">Enter the quantity of food :</label>
+                    <input type="number" placeholder="Enter Quantity" id="Selectquantity">
+                 </div>
+                  
+                  <button id="addtoDashboard">Add to Dashboard</button>
+              </div>
           </div>
-          <table>
-            <thead>
-                <th>Name</th>
-                <th>Quantity(cup for food/min for exercise)</th>
-                <th>Energy</th>
-            </thead>
-            <tbody id="dashboardAppend">
-
-            </tbody>
-        </table>
-
-        <div id="dashboardTargets">
-            <div>
-                <div>
-                  <h1><span id="totalcalories"></span>/2841</h1>
-                  <h3>Total Calories Consumed</h3>
-                </div>
-                <div>
-                    <h1><span id="caloriesremaining"></span>/2841</h1>
-                    <h3>Total Calories Remaining</h3>
-                </div>
-                <div>
-                    <h1><span id="caloriesBurnt"></span>/<span id="Totalcalories"></span></h1>
-                    <h3>Total Calories Burnt</h3>
-                </div>
-
-            </div>
-
-            <div>
-            <h3>Macronutient Targets</h3>
-            <table>
-                 <thead>
-                   <th>Macronutrients</th>
-                   <th>Total</th>
-                   <th>Target</th>
-                   <th>Percentage</th>
-                 </thead>
-                 <tbody>
-                   <tr>
-                    <th>Energy</th>
-                    <td id="totalenergy"></td>
-                    <td>2481 kcal</td>
-                    <td id="percentenergy"></td>
-                   </tr>
-                   <tr>
-                    <th>Protein</th>
-                    <td id="totalprotein"></td>
-                    <td>177.6g</td>
-                    <td id="percentprotein"></td>
-                   </tr>
-                   <tr>
-                    <th>NetCarbs</th>
-                    <td id="totalcarbs"></td>
-                    <td>319.6</td>
-                    <td id="percentcarbs"></td>
-                   </tr>
-                   <tr>
-                    <th>Fat</th>
-                    <td id="totalfat"></td>
-                    <td>94.7g</td>
-                    <td id="perrcentfat"></td>
-                   </tr>
-                 </tbody>
-            </table>
-            </div>
-        </div>
         </div>
     </div>
 </body>
@@ -432,7 +404,6 @@
 <script>
    var dropdown = document.getElementsByClassName("dropdown-btn");
 var i;
-console.log(dropdown);
 for (i = 0; i < dropdown.length; i++) {
   dropdown[i].addEventListener("click", function() {
     this.classList.toggle("active");
@@ -457,80 +428,105 @@ function myfunction2(){
 document.querySelector("#logoutDashboard").addEventListener("click",function(){
     window.location.assign("index.html");
 });
+ 
+let storedata = [];
+let temp;
 
-let planPurchase = JSON.parse(localStorage.getItem("paymentFor"))||[];
+fetch("https://639eb5f95eb8889197eb9a64.mockapi.io/nutrition")
+	.then(response => response.json())
+	.then(response =>{
+        let data = response;
+        storedata = data;
+        displayTable(data);
+    })
+	.catch(err => console.error(err));
+
+
+    function displayTable(data){
+        document.querySelector("#foodcontainer").innerHTML = null;
+      data.forEach((element,index) => {
+        let row = document.createElement("tr");
+        row.addEventListener("click",function(){
+
+        })
+        let name = document.createElement("td");
+        name.innerText = element.name;
+        let Energy = document.createElement("td");
+        Energy.innerText = element.Energy;
+        let protien = document.createElement("td");
+        protien.innerText = element.Protein;
+        let NetCarbs = document.createElement("td");
+        NetCarbs.innerText = element.Netcarbs;
+        let fat = document.createElement("td");
+        fat.innerText = element.Fat;
+        let Add = document.createElement("button");
+        Add.textContent = "Add";
+        Add.style.padding = "5px 20px";
+        Add.style.backgroundColor = "#272a3a";
+        Add.style.color = "white";
+        Add.style.border = "none";
+        Add.style.borderRadius = "5px";
+        Add.addEventListener("click",function(){
+            temp = element;
+        })
+
+        row.append(name,Energy,protien,NetCarbs,fat,Add);
+        document.querySelector("#foodcontainer").append(row);
+      });
+    
+    
+    }
+    
+    document.querySelector("#categoryFilter").addEventListener("change",function(){
+       let select = document.querySelector("#categoryFilter").value;
+
+       let newData = storedata.filter((element,index)=>{
+         return element.category == select;
+       })
+       if(select == ""){
+        displayTable(storedata);
+       }else{
+        displayTable(newData);
+       }
+    });
+
+    document.querySelector("#sortFilter").addEventListener("change",function(){
+        let select = document.querySelector("#sortFilter").value;
+        if(select == "LTHe"){
+            storedata = storedata.sort(function(a,b){
+                return a.Energy - b.Energy;
+            });
+        }
+        else if(select == "HTLe"){
+            storedata = storedata.sort(function(a,b){
+                return b.Energy - a.Energy;
+            });
+        }
+         
+        displayTable(storedata);
+    });
+    let dashboarddata = JSON.parse(localStorage.getItem("dashboardData"))||[];
+    let reduce = JSON.parse(localStorage.getItem("reduceData"))||[];
+    document.querySelector("#addtoDashboard").addEventListener("click",function(){
+      let quantity = document.querySelector("#Selectquantity").value;
+      temp.Energy = +temp.Energy * quantity;
+      temp.Protein = +temp.Protein * quantity;
+      temp.Fat = +temp.Fat * quantity;
+      temp.Netcarbs = +temp.Netcarbs * quantity;
+      let arr = [];
+      arr.push("food");
+      arr.push(temp);
+      arr.push(quantity);
+      dashboarddata.push(arr);
+      reduce.push(temp);
+      localStorage.setItem("dashboardData",JSON.stringify(dashboarddata));
+      localStorage.setItem("reduceData",JSON.stringify(reduce));
+    });
+
+    let planPurchase = JSON.parse(localStorage.getItem("paymentFor"))||[];
 if(planPurchase[3]===true){
     document.querySelector("#colorspan").textContent = planPurchase[1];
 }else{
     document.querySelector("#colorspan").textContent = "Basic";
-}
-
-let dashboardData = JSON.parse(localStorage.getItem("dashboardData"));
-let reduceData = JSON.parse(localStorage.getItem("reduceData"));
-displaytable(dashboardData);
-
-function displaytable(dashboardData){
-    document.querySelector("#dashboardAppend").innerHTML = null;
-    let totalcalories = reduceData.reduce((sum,current)=>{
-        let calories = +current.Energy;
-        return sum+calories;
-    },0);
-    let totalprotein = reduceData.reduce((sum,current)=>{
-        let protein = +current.Protein;
-        return sum+protein;
-    },0);
-    let proteinPercent = (totalprotein/177.6)*100;
-    let totalNetcarbs = reduceData.reduce((sum,current)=>{
-        let Netcarbs = +current.Netcarbs;
-        return sum+Netcarbs;
-    },0);
-    let NetcarbsPercent = (totalNetcarbs/319.6)*100;
-    let totalFat = reduceData.reduce((sum,current)=>{
-        let Fat = +current.Fat;
-        return sum+Fat;
-    },0);
-    let FatPercent = (totalFat/94.7)*100;
-    let remaining = 2841 - totalcalories;
-    let Netcal = dashboardData.reduce((sum,current)=>{
-        let energy;
-        if(current[0]=="food"){
-           energy = +current[1].Energy; 
-        }else{
-           energy = +(current[1].Energy*-1);
-        }
-        return sum+energy;
-    },0);
-
-    let energyPercent = (totalcalories/2481)*100;
-    let energy = totalcalories-Netcal;
-    document.querySelector("#totalcalories").textContent = totalcalories;
-    document.querySelector("#caloriesremaining").textContent = remaining;
-    document.querySelector("#caloriesBurnt").textContent = energy;
-    document.querySelector("#Totalcalories").textContent = totalcalories;
-    document.querySelector("#totalenergy").textContent = totalcalories;
-    document.querySelector("#percentenergy").textContent = energyPercent.toFixed(0)+"%";
-    document.querySelector("#totalprotein").textContent = totalprotein;
-    document.querySelector("#percentprotein").textContent = proteinPercent.toFixed(0)+"%";
-    document.querySelector("#totalcarbs").textContent = totalNetcarbs;
-    document.querySelector("#percentcarbs").textContent = NetcarbsPercent.toFixed(0)+"%";
-    document.querySelector("#totalfat").textContent = totalFat;
-    document.querySelector("#perrcentfat").textContent = FatPercent.toFixed(0)+"%";
-    console.log(totalcalories,remaining,energy);
-    dashboardData.forEach((element,index) => {
-        let row = document.createElement("tr");
-        let name = document.createElement("td");
-        name.textContent = element[1].name;
-        let Energy = document.createElement("td");
-        if(element[0]=="food"){
-            Energy.textContent = element[1].Energy;
-        }else{
-            Energy.textContent = (element[1].Energy*-1); 
-        }
-        let Quantity = document.createElement("td");
-        Quantity.textContent = element[2];
-
-        row.append(name,Quantity,Energy);
-        document.querySelector("#dashboardAppend").append(row);
-    });
 }
 </script>

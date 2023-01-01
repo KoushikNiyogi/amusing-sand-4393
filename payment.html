@@ -118,7 +118,7 @@
     console.log(paymentData);
 
     document.querySelector("#Title").textContent = paymentData[0];
-    document.querySelector("#totalbill").textContent = paymentData[1];
+    document.querySelector("#totalbill").textContent = paymentData[2];
     let heading = document.querySelector("#displaypaymentStatus");
     let otp ;
     let form = document.querySelector("form");
@@ -154,7 +154,6 @@
        }else{
           heading.textContent = "Payment Unsuccessful";
           heading.style.color = "red";
-          paymentData.push(false);
           localStorage.setItem("paymentFor",JSON.stringify(paymentData));
           location.reload();
        }

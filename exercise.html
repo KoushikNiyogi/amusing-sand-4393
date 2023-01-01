@@ -326,6 +326,7 @@
           </div>
            
           <form>
+            <h2 id="exercise">Add Exercise</h2>
             <label for="">Name of Exercise</label>
             <input type="text" placeholder="Enter name" id="exercise">
             <label for="">Duration</label>
@@ -400,6 +401,9 @@ function storeEnergy(event){
     arr.push(obj);
     arr.push(duration);
     temp.push(arr);
+    document.querySelector("#exercise").textContent = "Added to Dashboard";
+    document.querySelector("#exercise").style.color = "green";
+    window.location.assign("dashboard.html")
     localStorage.setItem("dashboardData",JSON.stringify(temp));
   }
 }

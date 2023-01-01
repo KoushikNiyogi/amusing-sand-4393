@@ -238,6 +238,10 @@
             border: none;
             border-radius: 5px;
         }
+        #alertFood{
+            text-align: center;
+            margin: 10px 0;
+        }
     </style>
 </head>
 
@@ -368,7 +372,8 @@
                     <option  value="HTLe">High to low - Energy</option>
                 </select>
             </div>
-            <h3>Select Your Food</h3>
+            <h1 id="alertFood"></h1>
+            <h3 >Select Your Food</h3>
             <div id="table">
                 <table>
                     <thead>
@@ -468,6 +473,8 @@ fetch("https://639eb5f95eb8889197eb9a64.mockapi.io/nutrition")
         Add.style.borderRadius = "5px";
         Add.addEventListener("click",function(){
             temp = element;
+            document.querySelector("#alertFood").textContent = "Please Add Quantity";
+            document.querySelector("#alertFood").style.color = "red";
         })
 
         row.append(name,Energy,protien,NetCarbs,fat,Add);
@@ -519,6 +526,8 @@ fetch("https://639eb5f95eb8889197eb9a64.mockapi.io/nutrition")
       arr.push(quantity);
       dashboarddata.push(arr);
       reduce.push(temp);
+      document.querySelector("#alertFood").textContent = "Recipe added to Dashboard";
+      document.querySelector("#alertFood").style.color = "green";
       localStorage.setItem("dashboardData",JSON.stringify(dashboarddata));
       localStorage.setItem("reduceData",JSON.stringify(reduce));
     });
